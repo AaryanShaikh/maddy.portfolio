@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
-    basePath: '/maddy.portfolio',
+    basePath: '/aaryanshaikh.github.io/maddy.portfolio',
 }
 
 module.exports = nextConfig
