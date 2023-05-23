@@ -1,13 +1,21 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import { Typography } from 'antd'
 import Footer from './Footer'
 import data from '../data.json'
+import LoadingSkeleton from './LoadingSkeleton'
 
 const About = () => {
+    const [isloading, setisloading] = useState(true)
+
+    useEffect(() => {
+        setisloading(false)
+    }, [])
+
     return (
         <div>
+            {isloading ? <LoadingSkeleton /> : ""}
             <Header pageSel="about" />
             <div style={{ marginTop: "62.5px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start" }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "26.5px" }}>
@@ -15,9 +23,9 @@ const About = () => {
                     <Typography.Paragraph style={{ fontFamily: 'Avenir LT Std', fontStyle: "normal", fontWeight: 350, fontSize: "22px", lineHeight: "29px", color: "#525252", width: "606px" }}>I'm always up for a good laugh, tasty food, long walks and quality time with friends. I love acting, reading, as well as calm piano music.</Typography.Paragraph>
                 </div>
                 <div style={{ display: "flex", height: "537px", gap: "16px", marginTop: "159.5px", overflow: "hidden" }}>
-                    <img src={`${data.basePath}images/Desktop/About/vinod_2.png`} style={{ borderRadius: "8px" }} />
-                    <img src={`${data.basePath}images/Desktop/About/vinod_1.png`} style={{ borderRadius: "8px" }} />
-                    <img src={`${data.basePath}images/Desktop/About/vinod_3.png`} style={{ borderRadius: "8px" }} />
+                    <img src={`/images/Desktop/About/vinod_2.png`} style={{ borderRadius: "8px" }} />
+                    <img src={`/images/Desktop/About/vinod_1.png`} style={{ borderRadius: "8px" }} />
+                    <img src={`/images/Desktop/About/vinod_3.png`} style={{ borderRadius: "8px" }} />
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
                     <Typography.Paragraph style={{ marginTop: "146.5px", width: "616px", fontFamily: "Avenir LT Std", fontStyle: "normal", fontWeight: 350, fontSize: "18px", lineHeight: "29px", letterSpacing: "0.4px", color: "#3D3D3D" }}>
