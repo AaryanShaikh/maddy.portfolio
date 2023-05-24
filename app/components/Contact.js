@@ -7,6 +7,15 @@ import Footer from './Footer'
 
 const Contact = () => {
     const [isloading, setisloading] = useState(true)
+    const [conData, setconData] = useState({ name: "", email: "", message: "" })
+
+    const onSendMessage = () => {
+        console.log("data", conData);
+        fetch("/api/test", {
+            method: "POST",
+            body: "this is a test"
+        })
+    }
 
     useEffect(() => {
         setisloading(false)
@@ -22,11 +31,11 @@ const Contact = () => {
                     <Typography.Paragraph style={{ fontFamily: "Avenir LT Std", fontStyle: "normal", fontWeight: 350, fontSize: "22px", lineHeight: "29px", colorL: "#525252", marginTop: "26.5px" }}> Let's envision a better future together by building solutions that positively impact the way we live and leave a better earth for future generations. Get in touch</Typography.Paragraph>
                     <div style={{ marginTop: "46.5px", display: "flex", flexDirection: "column", gap: "12px" }}>
                         <div style={{ display: "flex", gap: "17px" }}>
-                            <Input placeholder='Name' style={{ height: "45px", background: "rgba(240, 240, 240, 0.77)", borderRadius: "2px" }} />
-                            <Input placeholder='Email' style={{ height: "45px", background: "rgba(240, 240, 240, 0.77)", borderRadius: "2px" }} />
+                            <Input value={conData.name} onChange={(e) => { setconData({ ...conData, "name": e.target.value }) }} placeholder='Name' style={{ height: "45px", background: "rgba(240, 240, 240, 0.77)", borderRadius: "2px" }} />
+                            <Input value={conData.email} onChange={(e) => { setconData({ ...conData, "email": e.target.value }) }} placeholder='Email' style={{ height: "45px", background: "rgba(240, 240, 240, 0.77)", borderRadius: "2px" }} />
                         </div>
-                        <Input.TextArea placeholder="Message" style={{ height: "150px", background: "rgba(240, 240, 240, 0.77)", borderRadius: "2px" }} />
-                        <Button style={{ height: "45px", background: "#000000", borderRadius: "2px", color: "#fff" }}>Send Message</Button>
+                        <Input.TextArea value={conData.message} onChange={(e) => { setconData({ ...conData, "message": e.target.value }) }} placeholder="Message" style={{ height: "150px", background: "rgba(240, 240, 240, 0.77)", borderRadius: "2px" }} />
+                        <Button onClick={onSendMessage} style={{ height: "45px", background: "#000000", borderRadius: "2px", color: "#fff" }}>Send Message</Button>
                     </div>
                 </div>
             </div>
