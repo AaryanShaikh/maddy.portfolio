@@ -1,20 +1,31 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
-import { Button, Input, Typography } from 'antd'
+import { Button, Input, Typography, message } from 'antd'
 import LoadingSkeleton from './LoadingSkeleton'
 import Footer from './Footer'
 
 const Contact = () => {
     const [isloading, setisloading] = useState(true)
     const [conData, setconData] = useState({ name: "", email: "", message: "" })
+    const [ismailsending, setismailsending] = useState(false)
 
-    const onSendMessage = () => {
-        console.log("data", conData);
-        fetch("/api/test", {
-            method: "POST",
-            body: "this is a test"
+    const onSendMessage = async () => {
+        setismailsending(true)
+        let res = await fetch("/api/contact", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(conData),
         })
+        let result = await res.json()
+        if (result.status == "ok") {
+            message.success("I've recieved your message!")
+        } else {
+            message.error("An error occured!")
+        }
+        setismailsending(false)
     }
 
     useEffect(() => {
@@ -35,7 +46,7 @@ const Contact = () => {
                             <Input value={conData.email} onChange={(e) => { setconData({ ...conData, "email": e.target.value }) }} placeholder='Email' style={{ height: "45px", background: "rgba(240, 240, 240, 0.77)", borderRadius: "2px" }} />
                         </div>
                         <Input.TextArea value={conData.message} onChange={(e) => { setconData({ ...conData, "message": e.target.value }) }} placeholder="Message" style={{ height: "150px", background: "rgba(240, 240, 240, 0.77)", borderRadius: "2px" }} />
-                        <Button onClick={onSendMessage} style={{ height: "45px", background: "#000000", borderRadius: "2px", color: "#fff" }}>Send Message</Button>
+                        <Button loading={ismailsending} onClick={onSendMessage} style={{ height: "45px", background: "#000000", borderRadius: "2px", color: "#fff" }}>Send Message</Button>
                     </div>
                 </div>
             </div>
