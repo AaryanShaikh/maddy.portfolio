@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment';
 
 const Footer = () => {
-    const [currentTime, setCurrentTime] = useState(moment().format('hh:mm:ss A'));
+    const [currentTime, setCurrentTime] = useState(moment().format('hh:mm:ss'));
     const router = useRouter()
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentTime(moment().format('hh:mm:ss A'));
+            setCurrentTime(moment().format('hh:mm:ss'));
         }, 1000);
 
         return () => clearInterval(interval);
