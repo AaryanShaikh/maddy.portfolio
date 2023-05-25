@@ -26,6 +26,7 @@ const Contact = () => {
             message.error("An error occured!")
         }
         setismailsending(false)
+        setconData({ name: "", email: "", message: "" })
     }
 
     useEffect(() => {
