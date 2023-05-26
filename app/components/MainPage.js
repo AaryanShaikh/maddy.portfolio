@@ -25,8 +25,8 @@ const MainPage = () => {
                 <Typography.Text onClick={() => router.push('/about')} style={{ color: "#000000", textDecoration: "underline", fontFamily: "Avenir LT Std", fontStyle: "normal", fontWeight: 350, fontSize: "22px", lineHeight: "29px", cursor: "pointer" }}>Read more</Typography.Text>
             </div>
             <div style={{ display: "flex", flexDirection: "column", marginTop: "47.97px", alignItems: "center", gap: "20px" }}>
-                <img src={`/images/Desktop/Index/F1rst.png`} height={356} width={803} />
-                <img src={`/images/Desktop/Index/Shriram Housing Finance.png`} height={356} width={803} />
+                <img onClick={() => router.push("/projects/F1rst")} src={`/images/Desktop/Index/F1rst.png`} height={356} width={803} />
+                <img onClick={() => router.push("/projects/ShriramHousingFinance")} src={`/images/Desktop/Index/Shriram Housing Finance.png`} height={356} width={803} />
                 <img src={`/images/Desktop/Index/Bren.png`} height={356} width={803} />
                 <img src={`/images/Desktop/Index/Supplysail Dashboard.png`} height={356} width={803} />
                 <img src={`/images/Desktop/Index/UpSquad.png`} height={356} width={803} />
